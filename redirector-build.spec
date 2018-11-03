@@ -27,15 +27,15 @@ config for the rsyslog and logrotate, indicates the redirector in squid.conf
 rm -rf $RPM_BUILD_ROOT
 %{__install} -Dm 0644 redirector.py $RPM_BUILD_ROOT/usr/local/redirector/redirector.py
 %{__install} -Dm 0644 config.json $RPM_BUILD_ROOT/usr/local/redirector/config.json
-%{__install} -Dm 0644 redirector-rsyslog.conf $RPM_BUILD_ROOT/etc/rsyslog.d/redirector-rsyslog.conf
-%{__install} -Dm 0644 redirector-logrotate $RPM_BUILD_ROOT/etc/logrotate.d/redirector-logrotate
+%{__install} -Dm 0644 redirector_rsyslog.conf $RPM_BUILD_ROOT/etc/rsyslog.d/redirector_rsyslog.conf
+%{__install} -Dm 0644 redirector_logrotate $RPM_BUILD_ROOT/etc/logrotate.d/redirector_logrotate
 
 %files
 %defattr(-,root,root)
 /usr/local/redirector/redirector.py
 /usr/local/redirector/config.json
-/etc/rsyslog.d/redirector-rsyslog.conf
-/etc/logrotate.d/redirector-logrotate
+/etc/rsyslog.d/redirector_rsyslog.conf
+/etc/logrotate.d/redirector_logrotate
 
 %clean
 rm -rf $RPM_BUILD_ROOT

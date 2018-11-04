@@ -1,7 +1,84 @@
-# squid-redirector
-A simple python redirector/rewriter for squid
+# Python squid-redirector
 
-builder:
-cp redirector-1.0.tar.gz /home/builder/rpmbuild/SOURCES/
-rpmbuild -bb redirector-build.spec 
 
+### Задание:
+
+`
+Требуется разработать программу-реди⁠ректор для прокси-сервера Squid, 
+выполняющую перезапись
+(перенаправление) запросов на заданные сайты.
+`
+
+##### Требования к программе:
+
+- логирование всех действий в syslog;
+- список перенаправлений должен быть представлен в виде файла с данными 
+в формате JSON;
+- все изменения в списке перенаправлений должны начинать работать сразу 
+же, не требуя перезапуска Squid;
+
+##### Необязательные требования, реализация которых будет учтена особо:
+
+- готовый spec-файл для сборки RPM-пакета с программой;
+- готовые конфиги для rsyslog и logrotate чтобы все сообщения программы 
+попадали в определённый файл лога;
+
+### Средства реализации:
+
+- CentOS 7
+- Python36
+- Bash
+
+### Установка(bash):
+
+- Заклоньте репозиторий
+- Перейдите в директорию с репозиторием
+- Выполните:
+
+```bash
+sudo chmod +x ./setup_for_centos
+sudo ./setup_for_centos 
+```
+
+#### Проверка:
+
+```bash
+export http_proxy=127.0.0.1:3128
+curl yandex.ru
+```
+
+### Установка(rpm):
+
+- Заклоньте репозиторий
+- Перейдите в директорию с репозиторием
+- Выполните:  
+
+```bash
+sudo rpm -Uhv redirector-1.0-1.x86_64.rpm
+sudo service squid restart
+```
+
+#### Проверка:
+
+```bash
+export http_proxy=127.0.0.1:3128
+curl yandex.ru
+```
+### Сборка rpm пакета:
+
+- Создайте непривилегированного пользователя builder
+- Зайдите под ним
+- Выполните   sudo rpmdev-setuptree
+- Заклоньте репозиторий, перейдите в него
+- Выполните:
+
+```bash
+sudo cp redirector-1.0.tar.gz /home/builder/rpmbuild/SOURCES/ && rpmbuild -bb redirector-build.spec
+```
+
+- Собранный пакет находится в `/home/builder/rpmbuild/RPMS/x86_64`
+
+### Использование редиректора:
+
+Редиректор перезаписывает и перенаправляет запросы пользователя в соответствии со списком перенаправлений, указанных в  `/usr/local/redirector/config.json`
+Все логи перенаправлений хранятся в  `/var/log/custom/squid_redirector.log`  и ротируются в соответсвии с конфигом logrotate.

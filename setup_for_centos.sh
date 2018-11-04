@@ -23,3 +23,4 @@ echo "url_rewrite_children 5" >> $path_to_squid_conf
 echo "url_rewrite_program /usr/local/squid-redirector/redirector.py /usr/local/squid-redirector/config.json" >> $path_to_squid_conf
 
 service squid restart
+service rsyslog restart

@@ -25,7 +25,7 @@
 
 ### Средства реализации:
 
-- CentOS 7
+- CentOS 6,7
 - Python36
 - Bash
 

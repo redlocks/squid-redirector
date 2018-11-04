@@ -55,7 +55,6 @@ curl yandex.ru
 
 ```bash
 sudo rpm -Uhv redirector-1.0-1.x86_64.rpm
-sudo service squid restart
 ```
 
 #### Проверка:

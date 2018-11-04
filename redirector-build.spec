@@ -29,6 +29,13 @@ rm -rf $RPM_BUILD_ROOT
 %{__install} -Dm 0644 config.json $RPM_BUILD_ROOT/usr/local/redirector/config.json
 %{__install} -Dm 0644 redirector_rsyslog.conf $RPM_BUILD_ROOT/etc/rsyslog.d/redirector_rsyslog.conf
 %{__install} -Dm 0644 redirector_logrotate $RPM_BUILD_ROOT/etc/logrotate.d/redirector_logrotate
+1
+
+Name: redirector
+
+2
+
+Version: 1.0
 
 %files
 %defattr(-,root,root)
@@ -46,4 +53,4 @@ echo "url_rewrite_program /usr/local/redirector/redirector.py /usr/local/redirec
 chmod +x /usr/local/redirector/redirector.py
 service squid restart
 service rsyslog restart
-service logrotate restart
+

@@ -7,10 +7,10 @@ yum -q list installed squid &>/dev/null && echo "squid is nstalled" || yum -y in
 yum -q list installed centos-release-scl &>/dev/null && echo "centos-release-scl is installed" || yum -y install centos-release-scl
 yum -q list installed rh-python36 &>/dev/null && echo "rh-python36 is nstalled" || yum -y install rh-python36
 
-path_to_redirector = /usr/local/squid-redirector/
-path_to_rsyslog_conf = /etc/rsyslog.d/
-path_to_logrotate_conf = /etc/logrotate.d/
-path_to_squid_conf = /etc/squid/squid.conf
+path_to_redirector=/usr/local/squid-redirector/
+path_to_rsyslog_conf=/etc/rsyslog.d/
+path_to_logrotate_conf=/etc/logrotate.d/
+path_to_squid_conf=/etc/squid/squid.conf
 
 chmod +x redirector.py && cp /redirector.py $path_to_redirector
 cp /config.json $path_to_redirector

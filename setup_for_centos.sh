@@ -13,9 +13,9 @@ path_to_logrotate_conf=/etc/logrotate.d/
 path_to_squid_conf=/etc/squid/squid.conf
 
 chmod +x redirector.py && cp /redirector.py $path_to_redirector
-cp /config.json $path_to_redirector
-cp /rsyslog-redirector.conf $path_to_rsyslog_conf
-cp /logrotate-redirector $path_to_logrotate_conf
+cp config.json $path_to_redirector
+cp rsyslog-redirector.conf $path_to_rsyslog_conf
+cp logrotate-redirector $path_to_logrotate_conf
 
 echo "url_rewrite_children 5" >> $path_to_squid_conf
 # Number of instances of the above program that should run concurrently.

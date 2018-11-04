@@ -12,7 +12,7 @@ path_to_rsyslog_conf=/etc/rsyslog.d/
 path_to_logrotate_conf=/etc/logrotate.d/
 path_to_squid_conf=/etc/squid/squid.conf
 
-chmod +x redirector.py && cp redirector.py $path_to_redirector
+chmod +x redirector.py && mkdir $path_to_redirector && cp redirector.py $path_to_redirector
 cp config.json $path_to_redirector
 cp redirector_rsyslog.conf $path_to_rsyslog_conf
 cp redirector_logrotate $path_to_logrotate_conf

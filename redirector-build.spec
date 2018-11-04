@@ -42,5 +42,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 echo "url_rewrite_children 5" >> /etc/squid/squid.conf
-echo "url_rewrite_program /usr/local/redirector.py /usr/local/redirector/config.json" >> /etc/squid/squid.conf
+echo "url_rewrite_program /usr/local/redirector/redirector.py /usr/local/redirector/config.json" >> /etc/squid/squid.conf
 chmod +x /usr/local/redirector/redirector.py
+service squid restart
+service rsyslog restart
+service logrotate restart
